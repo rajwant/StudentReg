@@ -1,0 +1,88 @@
+<div class="container">
+    <h1>Student Registration</h1>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="firstName"> Name</label>
+            <input type="text" formControlName="firstName" class="form-control"
+                [ngClass]="{ 'is-invalid':submitted && f.firstName.errors}" />
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-frrdback">
+                <div *ngIf="f.firstName.errors.required">First Name is Required
+
+                </div>
+            </div>
+        </div>
+        Id, Name, Password, Courses, City, State and Country
+     
+        
+
+     
+        <div class="form-group">
+            <label for="password">password</label>
+            <input type="text" formControlName="password" class="form-control"
+                [ngClass]="{ 'is-invalid':submitted && f.password.errors}" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-frrdback">
+                <div *ngIf="f.password.errors.required">password is Required
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="course">Courses</label>
+
+            <select   formControlName="courseName" >
+                <option value="">Choose your course</option>
+                <option *ngFor="let cours of course" [ngValue]="cours.cName" (change)="changeCourse($event)">{{cours.cName}}</option>
+              </select>
+         
+         
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="country">Country</label>
+
+            <select   formControlName="Country" >
+                <option value="">Choose your Country</option>
+                <option *ngFor="let con of Country" [ngValue]="con.cName" (change)="changeCountry($event)">{{con.cName}}</option>
+              </select>
+         
+         
+        </div>
+
+        <div class="form-group">
+            <label for="state">State</label>
+
+            <select   formControlName="State" >
+                <option value="">Choose your State</option>
+                <option *ngFor="let state of State" [ngValue]="state.SName" (change)="changeState($event)">{{state.SName}}</option>
+              </select>
+         
+         
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+
+            <select   formControlName="cityName" >
+                <option value="">Choose your City</option>
+                <option *ngFor="let city of City" [ngValue]="city.cName" (change)="changeCity($event)">{{city.cName}}</option>
+              </select>
+         
+         
+        </div>
+
+
+       
+        <div class="form-group">
+            <button class="btn btn-primary">Register</button>
+        </div>
+
+      
+    </form>
+</div>
+
+
+
